@@ -1,0 +1,79 @@
+project: VoltaEdge
+specification: v7
+status_date: 2026-10-15
+purpose: IoT electricity intelligence layer
+canonical_local_path: 'C:\Users\USER\esp\volta-edge-v7'
+design_status:
+  architecture_graph: frozen
+  invariant_hierarchy: frozen
+  ownership_model: frozen
+  stream_epoch_and_frame_sequence: frozen
+  parser_phase_model: frozen
+  calibration_boundary: frozen
+  window_semantics: frozen
+  energy_commit_semantics: frozen
+  fault_recovery_path: frozen
+environment_evidence:
+  checkpoint: CP-000
+  status: verified_environment_example_build
+  esp_idf: 'v6.1'
+  target: esp32
+  example_path: 'C:\Users\USER\esp\hello_world'
+  limitation: 'Does not verify VoltaEdge v7 firmware, hardware, metrology, or safety.'
+firmware_build_evidence:
+  checkpoint: CP-001
+  status: build_verified
+  date: '2026-10-15'
+  esp_idf: 'v6.1'
+  target: esp32
+  build_command: 'idf.py -C "C:\Users\USER\esp\volta-edge-v7" build'
+  application_binary: 'build\VoltaEdge.bin'
+  application_bytes: 142288
+  application_sha256: '6D6FC5F4F695DDFBEA6B3CF349D5C767B652186C832AE56C1A604A537C11A0AD'
+  bootloader_and_partition_table: generated
+  runtime_verified: false
+  hardware_verified: false
+  limitation: 'Build evidence only; no flashing, runtime, acquisition, metrology, or safety validation established.'
+measurement:
+  aggregate_conversions_per_second: 8000
+  channel_order: alternating_voltage_current
+  voltage_samples_per_second: 4000
+  current_samples_per_second: 4000
+  pairs_per_second_before_delay_compensation: 4000
+  frame_bytes: 1280
+  conversions_per_frame: 320
+  pairs_per_frame: 160
+  ten_frame_duration_seconds: 0.4
+  pairs_in_ten_frames: 1600
+  mains_frequency_hz: 50
+  microseconds_per_degree: 55.55
+  remembered_iv_spacing_microseconds: 125
+  phase_degrees_at_50hz: 2.25
+  M: 4
+hardware:
+  module: ESP32-WROOM-32
+  acquisition: ADC_I2S0_DMA
+  marker_gpio: 18
+  adc_gpios: [32, 33]
+  ring_size: 8
+  core0_role: Wi-Fi stress
+  core1_role: consumer
+calibration_assumptions:
+  adc_bias_volts: 1.65
+  current_transformer_ratio: '1000:1'
+  current_transformer_burden_ohms: 220
+  zmpt_target_vrms_at_240vac: 1.0
+procurement_notes:
+  core_kit_ngn: 38550
+  ADuM1201_ngn: 4000
+  B0505LS_1W_ngn: 1600
+  MAX485_ngn: 220
+  HWCT_5A_5mA_ngn: 1600
+  ZMPT101B_ngn: 4500
+  note: 'Remembered prices; verify current supplier quotes and exact variants.'
+open_items:
+  - recover_and_reconcile_full_frozen_v7_spec
+  - firmware_runtime_verification
+  - hardware_bench_validation
+  - calibration_and_reference_comparison
+  - safety_review

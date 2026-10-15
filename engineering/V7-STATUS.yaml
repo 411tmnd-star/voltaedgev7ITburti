@@ -1,0 +1,22 @@
+﻿project: Volta Edge V7
+stage: development-foundation
+checkpoint: CP-000
+
+development:
+  esp_idf: "6.1"
+  target: "esp32"
+  environment_verified: true
+
+firmware:
+  curated: false
+  implemented: false
+  build_verified: false
+
+hardware:
+  procurement_started: false
+  integrated: false
+  physically_verified: false
+
+evidence:
+  latest_checkpoint: CP-000
+  status: verified
